@@ -1,0 +1,10 @@
+Bundle-Name: taskmanager-services-api
+Bundle-SymbolicName: taskmanager.services.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	taskmanager.services.exception,\
+	taskmanager.services.model,\
+	taskmanager.services.service,\
+	taskmanager.services.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../taskmanager-services-service/service.xml

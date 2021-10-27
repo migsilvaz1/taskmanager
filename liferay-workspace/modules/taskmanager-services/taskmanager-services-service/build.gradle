@@ -1,0 +1,18 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly project(":modules:taskmanager-services:taskmanager-services-api")
+}
+
+buildService {
+	apiDir = "../taskmanager-services-api/src/main/java"
+}
+
+group = "taskmanager.services"
+
+tasks.withType(JavaCompile) {
+
+	// Generated classes using Jodd library are unable to be read when compiled against JDK 11
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
