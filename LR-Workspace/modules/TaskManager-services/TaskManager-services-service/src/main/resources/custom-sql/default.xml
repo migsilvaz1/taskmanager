@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+	<sql id="taskToDo">
+		<![CDATA[
+			SELECT * FROM TM_TASK T WHERE T.COMPANYID = ? AND T.GROUPID = ? AND T.USERID = ? AND T.DONEDATE IS null
+		]]>
+	</sql>
+	<sql id="taskDone">
+		<![CDATA[
+			SELECT * FROM TM_TASK T WHERE T.COMPANYID = ? AND T.GROUPID = ? AND T.USERID = ? AND T.DONEDATE IS NOT null
+		]]>
+	</sql>
+</custom-sql>

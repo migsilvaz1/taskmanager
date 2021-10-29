@@ -1,0 +1,4 @@
+Bundle-Name: TaskManager-portlet
+Bundle-SymbolicName: taskmanager.portlet
+Bundle-Version: 1.0.0
+Export-Package: taskmanager.portlet.constants

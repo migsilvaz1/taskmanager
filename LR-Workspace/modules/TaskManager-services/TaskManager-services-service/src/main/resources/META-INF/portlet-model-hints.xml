@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="taskmanager.services.model.Task">
+		<field name="uuid" type="String" />
+		<field name="taskId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="title" type="String">
+			<hint name="max-length">250</hint>
+		</field>
+		<field name="description" type="String">
+			<hint name="max-length">2000</hint>
+		</field>
+		<field name="createDate" type="Date" />
+		<field name="doneDate" type="Date" />
+	</model>
+</model-hints>

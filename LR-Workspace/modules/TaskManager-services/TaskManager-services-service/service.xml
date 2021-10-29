@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="taskmanager.services">
+	<namespace>TM</namespace>
+	<entity local-service="true" name="Task" remote-service="false" uuid="true">
+		<!-- PK fields -->
+		<column name="taskId" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		
+		<!-- Task fields -->
+		<column name="title" type="String" />
+		<column name="description" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="doneDate" type="Date" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="createDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupIdCompanyIdUserId" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="companyId" />
+			<finder-column name="userId" />
+		</finder>
+		
+	</entity>
+</service-builder>
