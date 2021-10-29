@@ -2,6 +2,7 @@
 <%@page import="taskmanager.services.model.Task"%>
 
 <%@ include file="/init.jsp" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <%
 	List<Task> tasksToDo = (List<Task>) request.getAttribute("tasksToDo");
@@ -35,8 +36,14 @@
 					<button type="button" id="create" class="btn btn-outline-secondary"><liferay-ui:message key="button.create"/></button>
 				</div>
 
-
-				<table id="toDoTable" class="table table-striped table-hover"<%if(tasksToDo.isEmpty()){%> style="display:none" <%}%>>
+				<c:choose>
+					<c:when test = "${tasksToDo.isEmpty()}">
+           				<table id="toDoTable" class="table table-striped table-hover" style="display:none">
+         			</c:when>
+         			<c:when test = "${!tasksToDo.isEmpty()}">
+            			<table id="toDoTable" class="table table-striped table-hover">
+         			</c:when>
+         		</c:choose>
 					<tbody id="bodyToDo">
 			<%
 				for(Task task: tasksToDo){
@@ -53,7 +60,14 @@
 				</table>
 
 				<!-- NO TASKS TO DO -->
-				<div id="toDoMessage" class="alert alert-primary" role="alert" <%if(!tasksToDo.isEmpty()){%> style="display:none" <%}%>><liferay-ui:message key="todo.list.empty"/></div>
+				<c:choose>
+					<c:when test = "${!tasksToDo.isEmpty()}">
+           				<div id="toDoMessage" class="alert alert-primary" role="alert" style="display:none"><liferay-ui:message key="todo.list.empty"/></div>
+         			</c:when>
+         			<c:when test = "${tasksToDo.isEmpty()}">
+            			<div id="toDoMessage" class="alert alert-primary" role="alert"><liferay-ui:message key="todo.list.empty"/></div>
+         			</c:when>
+         		</c:choose>
 
 			</div>
 			<!-- TODO LIST DIV END-->
@@ -64,7 +78,16 @@
 					<button type="button" id="verCompletadas" class="btn btn-outline-secondary"><i id="chevron" class="bi bi-chevron-compact-right"></i> Completadas</button>
 				</div>
 				<div id="collapsable" style="display: none">
-				<table id="doneTable" class="table table-success table-hover" <%if(tasksDone.isEmpty()){%> style="display:none" <%}%>>
+
+				<c:choose>
+					<c:when test = "${tasksDone.isEmpty()}">
+           				<table id="doneTable" class="table table-success table-hover" style="display:none">
+         			</c:when>
+         			<c:when test = "${!tasksDone.isEmpty()}">
+            			<table id="doneTable" class="table table-success table-hover">
+         			</c:when>
+         		</c:choose>
+
 					<tbody id="bodyDone">
 			<%
 				for(Task task: tasksDone){
@@ -81,7 +104,15 @@
 				</table>
 				</div>
 				<!-- NO TASKS TO DO -->
-				<div id="doneMessage" class="alert alert-primary" role="alert"<%if(!tasksDone.isEmpty()){%> style="display:none" <%}%>><liferay-ui:message key="done.list.empty"/></div>
+
+				<c:choose>
+					<c:when test = "${!tasksDone.isEmpty()}">
+           				<div id="doneMessage" class="alert alert-primary" role="alert" style="display:none"><liferay-ui:message key="done.list.empty"/></div>
+         			</c:when>
+         			<c:when test = "${tasksDone.isEmpty()}">
+            			<div id="doneMessage" class="alert alert-primary" role="alert"><liferay-ui:message key="done.list.empty"/></div>
+         			</c:when>
+         		</c:choose>
 
 			</div>
 			<!-- DONE LIST DIV END-->
